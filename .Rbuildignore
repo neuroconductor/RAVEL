@@ -7,3 +7,5 @@ todo.txt
 ^images/.+$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+
+^appveyor\.yml$
