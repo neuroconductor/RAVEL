@@ -11,5 +11,5 @@ Url: https://github.com/Jfortin1/RAVEL
 LazyData: TRUE
 biocViews:License: GPL-2
 RoxygenNote: 6.0.1
-Remotes: neuroconductor/WhiteStripe@102d94b294c0574309921cebdd44be1aeaedb6c6, neuroconductor/oro.nifti@1fcbb0d553256f62815ce5f42d45bcbfcc7d60fd, neuroconductor/neurobase@0a53bc2b6c542654fd141223a9d2675fed9cf07f, neuroconductor/EveTemplate@e709bdd9ac372fca4bb952362a470d77d32af1d8, jfortin1/RAVELData, neuroconductor/ANTsR@246d86c114527a802b8d0eb482351a770ff86849
+Remotes: neuroconductor/WhiteStripe@7f70edf956358fda76f68c013e2ed8a8999e9127, neuroconductor/oro.nifti@b1f1459c23fb8cb26258a320fcc7ddd73e304e11, neuroconductor/neurobase@5e4f3b8b0469308fa9896e6618a6eb04089c617c, neuroconductor/EveTemplate@69cb7dcc54d73c38944e4d6c7b1a5cf2b6bceae4, jfortin1/RAVELData, neuroconductor/ANTsR@d6185edb5eb3ccb46efd0b130f93aeb1d0267b18
 
