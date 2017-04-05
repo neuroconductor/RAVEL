@@ -32,11 +32,11 @@ of T1, T2 or FLAIR.}
 
 \item{returnMatrix}{Should the matrix of normalized intensities be returned?}
 
-\item{writeToDisk}{Something}
+\item{writeToDisk}{Should the normalized images be saved to disk?}
 
 \item{verbose}{Should messages be printed?}
-                        
-\item{...}{Arguments to be passed to whitestripe}
+
+\item{...}{additional arguments to pass to \code{\link{whitestripe}}}
 }
 \value{
 if \code{returnMatrix} is \code{FALSE}, no value returned, but
