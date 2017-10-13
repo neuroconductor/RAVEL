@@ -3,12 +3,13 @@ Title: Removal of Artificial Voxel Effect by Linear Regression
 Version: 1.1.1
 Author: Jean-Philippe Fortin, R Taki Shinohara
 Maintainer: Jean-Philippe Fortin <fortin946@gmail.com>
-Suggests:
+Suggests: 
     BiocStyle,
     knitr,
     RAVELData,
     EveTemplate,
-    rmarkdown
+    rmarkdown,
+    covr
 Imports:
     methods,
     WhiteStripe,
@@ -19,11 +20,14 @@ Imports:
 BugReports: https://github.com/Jfortin1/RAVEL/issues
 Description: Removal of artificial voxel effect by linear regression.
 Url: https://github.com/Jfortin1/RAVEL
-Remotes: jfortin1/RAVELData, jfortin1/EveTemplate
 LazyData: TRUE
 License: GPL-2
 Encoding: UTF-8
 RoxygenNote: 6.0.1.9000
 biocViews: 
 VignetteBuilder: knitr
-
+Remotes: jfortin1/RAVELData,
+    neuroconductor/oro.nifti@c25f6bcb1200506a3e39127f550bcca7766b0107,
+    neuroconductor/EveTemplate@8ae5ece37f7bdc1b94528ed8223e02f929ccd0ef,
+    neuroconductor/WhiteStripe@405e4f4eac93b3063149eafce31351d3f15ced9e,
+    neuroconductor/neurobase@c668aabafa4a51381b7cbc56ff23101abd19e337
