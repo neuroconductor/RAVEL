@@ -1,16 +1,29 @@
 Package: RAVEL
 Title: Removal of Artificial Voxel Effect by Linear Regression
-Version: 1.0.3
+Version: 1.1.1
 Author: Jean-Philippe Fortin, R Taki Shinohara
 Maintainer: Jean-Philippe Fortin <fortin946@gmail.com>
-Suggests:    BiocStyle,    knitr,    RAVELData,    EveTemplate
-Imports:    methods,    WhiteStripe,    oro.nifti,    neurobase,    pbapply,    limma
+Suggests:
+    BiocStyle,
+    knitr,
+    RAVELData,
+    EveTemplate,
+    rmarkdown
+Imports:
+    methods,
+    WhiteStripe,
+    oro.nifti,
+    neurobase,
+    pbapply,
+    limma
 BugReports: https://github.com/Jfortin1/RAVEL/issues
 Description: Removal of artificial voxel effect by linear regression.
 Url: https://github.com/Jfortin1/RAVEL
+Remotes: jfortin1/RAVELData, jfortin1/EveTemplate
 LazyData: TRUE
 License: GPL-2
-RoxygenNote: 6.0.1
-biocViews:
-Remotes: neuroconductor/WhiteStripe@e2e533f531bb3149ce714e0455f5f1cc4d4bcd63, neuroconductor/oro.nifti@a3e10fbd070ba2b44c00dbe17942546b666acddd, neuroconductor/neurobase@f71ec2db52af7f164f2cd55a11f696ce4bf383a7, neuroconductor/EveTemplate@32b9b8db3d04b3daa269b83e37a52baaad50803a, jfortin1/RAVELData, neuroconductor/ANTsR@48d84544d6d95a70f0fb51f5a5dd3c4b7f9d73b2
+Encoding: UTF-8
+RoxygenNote: 6.0.1.9000
+biocViews: 
+VignetteBuilder: knitr
 
