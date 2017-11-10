@@ -9,6 +9,8 @@ addons:
   apt:
     packages:
     - libfftw3-dev
+    - libgsl0-dev
+    - libgsl0ldbl
 os:
 - linux
 - osx
@@ -35,6 +37,7 @@ before_install:
 - cat DESCRIPTION
 - export PACKAGE_NAME=`package_name`
 - if [[ "${PACKAGE_NAME}" == "waveslim" ]]; then fftw_install ; fi
+- if [[ "${PACKAGE_NAME}" == "dti" ]]; then gsl_install ; fi
 after_success:
 - cat ${PACKAGE_NAME}.Rcheck/00install.out
 - cat ${PACKAGE_NAME}.Rcheck/00check.log
@@ -52,7 +55,7 @@ deploy:
   on:
     tags: true
   api-key:
-    secure: g7sX+IIbe2njB+tXYszfadHi6eIyR8M2jACnBH1SBze489CPm26CiEK0PerS0aaiHtEHKRLFkjYuCv7Fisr5TgB3wREH5xV00IrfjC93c++6qMu4UDTVM1XhWvEJb1NEuGrKKGsBqAC6cSMdWoW9wQeEzbM7X6sGOwBqERlfl8461/VbR0yRWBKtF7Qg6H1IedeCGLSmi8LFGeT2aosLcZ1QQUi9c2MBKhgwkgEHqq8VIJJOk8MuEWLXP9nIKR+x70JQoRKS9sZTnNtLMeMfQSwC6UVhsQbOEu3/0j2aJHQoqNgVKQqy8qfG3rzsfqxzyVbynkF8r/xFqvweYOXv4bo3H6+jORDZkcMEn6B0XbGdSeMf/nfTAbmW7sV2IpbvELPZVdyxHGr+XDcDEWlreP9S6rxz0pNLTW1tFSDLMTYbvHp2EdnT3RiZA59rthyfXcJ2VPIfPnGuAzZPh7BeSa+GHUK/WOQfCavK7bZrpyNOhrIE7ajroTF45lzajDsJzkexcTBV1ambdZ5MSmkl1yXs4quS861NcpoE4SCTA2EJfwv7eftMyVB9di62v4HtJHMViO4+Pdrof+TpVHV98Z8eiLCzeH2E19D762gSNSTQhhrMkuUN5zzclsk6OzS3b8qwaG0LgtDRAnjY2LplzbwSZ5Hs4TWiIeHYNKvERWQ=
+    secure: WYrczqpxZ2OInMELc8VcwKzI80/ZevkDuTegTJsk/6RKNE3sLWs8KEhU0ypv5ywFtltFQb2ZYqAu6u4as9i6xynNUNGuWpQIjStUtvG66TR8iDW90kunjMVeV27bZ6aE1cEmeGYDW+wrms0qf1APyu7ELeR0zDKAsF71ooV2VUx9jZjEexMBLeWhkQQOyyBFuTuvKPHBn1t882uT2xWP/DtN1x9TdqU9WVzEVXfkNVyn5z7kzXHWBWbGXaDpxxtA39ANxjONUzvNRrxUMGnYs2A53Ja9tS4TThwoT9Ttea08PVZZSn6diOTFOj8WzlnkWrThsJEJu1lZZIJ6rpC5E+WAENjhsaeQmHlKox9uKIGR89crrfJxMXt68p41sPkshgxVlGvGOG+/0UX7xAHC+xyTvbTjpG4Um5dshtf+jxd9SAAOGWnDSY/YxQtuYAFtFlO6qadOyFX9+n2RuYhQ/STK+iBII3bGeQ8wvAFgvkLx6m7xcPTS388kLZIMI6WXbaXD9ZpPNb4MMqTpZaFGm9kUrcorsoJy1fsDUErP+b7oyjep31pyBPPxxOczi6fdejF4wotukiWgwkdJT+2KDjUtx0pAEOBbzVFSDKSRLPXSloJaPh588KhC4G9nu+Q6AkJtZRqIKMRzyfvOmC3XQ9WHSPRIaxg+zzVvyuIhm3I=
 after_deploy:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then Rscript -e 'covr::coveralls(type =
   "all")' ; fi
