@@ -27,7 +27,7 @@ RoxygenNote: 6.0.1.9000
 biocViews: 
 VignetteBuilder: knitr
 Remotes: jfortin1/RAVELData,
-    neuroconductor/oro.nifti@e066bff259d77de5614a3ffc1c293310ab4eb997,
-    neuroconductor/EveTemplate@095be9301728d725eeba6fdebb8db864e8deb79c,
-    neuroconductor/WhiteStripe@1e5af891e244fa2e14fe7f2726005a76f799bb6c,
-    neuroconductor/neurobase@8c9dd1990b2940e1d15965f50d7d787dca9eceaf
+    neuroconductor/oro.nifti@248fafa9254064c3290286abd3ecf2dd791286fb,
+    neuroconductor/EveTemplate@7558621217c3e7de754e60f9e40e79829538c942,
+    neuroconductor/WhiteStripe@b0f6a098cf6f49e716249520ca04d4f3132ccf1a,
+    neuroconductor/neurobase@f01883a16cfc382e98da1da7dc4329addcefad35
