@@ -23,6 +23,7 @@ env:
   - DISPLAY=:99.0
 r_check_args: "--as-cran --install-args=--build"
 before_install:
+- ulimit -n 2048
 - export PROJ_DIR=`basename $PWD`
 - fname=travis_helpers.sh
 - wget -O ${fname} http://bit.ly/travis_helpers
@@ -56,7 +57,7 @@ deploy:
   on:
     tags: true
   api-key:
-    secure: igNz6LWPBzmtHG15/nDcaVkHGmb4TQQq0Lj6XqhZNoHjrF96e3I1COV2DikZef8Hsfq6RfQ0p7wGMl/OrvqeGpaiX8eodx+dRxRSgaz1S69agLUpHskCfdm8zt+fka01ViyrTFI6kJ1S1YOIvqdGzTNZN7qq6/A/J3q6lJI8uKYsWT6P25mU/Oy/lHgTXgDu1mFtNYg76REC+SvujYkanYvh5u2m1Eo6EqAnQHcbDxVsVE+1nlK/aP9z43WnWsLzr/Brik4gHJhmQ50rgJzUXZGdDmk7BKfiEwklHeOVV9NRXxkTDQmoTAUqJyRjw63c3THAo0gRRyi/r3kuwiXBLJ/pCXeHdpx0XsVaN3pWHWiHWIZNQK1RAQybmQqZ3ylrDLqW9NN08ozR/8a6HSq/cd5HhMPO3Q9Olmy7Tz1YnhebKdfI4LAWAb7/AMvz5kTaGcDhudgyEXtApv4PahsT0evF0GqEqXWDm7qA5UGEbcjZVPYa7vhI85Ptt16r4nGZpBLYc8mOcY0MSBGMtx6nmM/us0qXCiL27HtajSPQRXmJJihIOhVNUyshJa3guZJdskCft9NjXJ4/xaShgcpEpGamglKmf5H4AJofWp13nnz/q5arjaaGdVL68CBeVcKrvNG40qZRdoFx0AUKTPpO9caKcW8vRMvyR47fj4NSv6s=
+    secure: JHBLWQfrIgHWy2kn1Y4P5v9MjEzceWAU140ZXBk/h4p1D5HrlCerh12IHwhgNLvFLtzsb//SjgdElZ5aGbKuL3Q2mVJ3YosAIMK2hkCtgQv0pOcGtBtcIV8pVoscWy5wU7UWZPkCzYVpU4qTiOeBqnICqvMJ2KsC/eQzEKmvuPm49SYS+SvJN9r5Px+TkiFNktiXaocFB/C0DuFKIjT9k3WJp3n3O0A9c1kLygX0q1CRn7VECUlXPraVs+s5tc4qp1CzYzwJRIR4WosXicae5//ERL46izkjw9BDWSCcCPbg6gNECjQ4vjZjmShOWTNDhw44SMYONN27ZlDtIXUbflkoWEY0c9UiXOIDGPCiY/H2P+GvPeAoelLCX0ajexQAISyG0/00KdH0sNpg7maKcsFpfgI+t4vogVRd5l4lB+nm4piTb/CyTZctQCMWSdCjq7iByj1f1XGQFqBRazEVrIwCB6AajmeyvFMFV8G1yLcg1FKtZOTmjlPis/W7q2YGuyFW/CpEMjSJ8qbMJqP1pVLfS+sX0MfkNhh4ynkhnd1CVmk2c0Czi2yorS7XdEtJT/4Ujva6OqPMHtp8b9G0TCHh3OBEw+TArmUzGQRmsJ3gRfsApGro78vcD7aP+GclB/cyjJAk80+BMrJknWG7sXOiZkzAR16csmWKQ2Tu3Ic=
 after_deploy:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then echo 'covr::coveralls(type = "all")'
   > neuroc_covr.R ; travis_wait 100 Rscript neuroc_covr.R ; rm neuroc_covr.R ; fi
