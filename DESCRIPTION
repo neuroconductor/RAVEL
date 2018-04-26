@@ -16,7 +16,7 @@ biocViews:
 VignetteBuilder: knitr
 Remotes:  
     jfortin1/RAVELData,
-    neuroconductor/oro.nifti@36474ce8faeb769d00c7bab606f9bb1ca46ccba8,
-    neuroconductor/EveTemplate@ffc39a4f268034bf4ada95e5befe288cdc781b9a,
-    neuroconductor/WhiteStripe@6d0c012e52713c20741408076ddd386d3ae158c3,
-    neuroconductor/neurobase@cf79914b4ae46d0e4d3d3d291798da99bdc496ba
+    neuroconductor/oro.nifti@654f99fc85fdaf21253e3eca6bfb1678d46f41c9,
+    neuroconductor/EveTemplate@217ab53b1225d83b1e7a4526e6ad11ea3c47c228,
+    neuroconductor/WhiteStripe@716cdc68fe4c96af2e2957f6e56d5751889f0e77,
+    neuroconductor/neurobase@b4ad772be785a8f6a5347500b2c390ffe51f812a
