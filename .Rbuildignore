@@ -16,6 +16,7 @@ sticker\.png
 ^icon\.png$
 ^sticker\.R$
 ^sticker\.png$
+^README\.Rmd$
 ^DESCRIPTION\.bak$
 ^\.travis\.yml$
 ^\./\.travis\.yml\.bak$
