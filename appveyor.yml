@@ -10,12 +10,27 @@ init:
 
 environment:
   global:
-    USE_RTOOLS: true    
-    R_CHECK_INSTALL_ARGS: "--install-args=--build --no-multiarch"
+    USE_RTOOLS: true
+    R_CHECK_INSTALL_ARGS: "--install-args=--build --no-multiarch "
     WARNINGS_ARE_ERRORS: 1
+  matrix:
+    - R_VERSION: devel
+
+    - R_VERSION: release
+
+    - R_VERSION: oldrel
+      CRAN: http://cran.rstudio.com
+
+    - R_VERSION: 3.3.0
+      CRAN: http://cran.rstudio.com
+
+    - R_VERSION: 3.2.0
+      CRAN: http://cran.rstudio.com
 
 install:
   - ps: Bootstrap
+  - ps: (new-object net.webclient).DownloadFile('https://sourceforge.net/projects/mcmc-jags/files/JAGS/4.x/Windows/JAGS-4.2.0-Rtools33.exe', 'C:\projects\JAGS-4.2.0.exe')
+  - cmd: C:\projects\JAGS-4.2.0.exe /S  
 
 cache:
   - C:\RLibrary
@@ -25,9 +40,10 @@ build_script:
   - travis-tool.sh install_deps
 
 test_script:
-  - set TMP=C:/
-  - set TMPDIR=C:/
-  - set TEMP=C:/
+  - mkdir -p C:\rtm
+  - set TMP=C:/rtm
+  - set TEMP=C:/rtm
+  - set TMPDIR=C:/rtm
   # need to move to higher dir because CMake path req
   - mkdir -p C:\run
   - cp -avr * C:\run
@@ -76,6 +92,11 @@ artifacts:
 
   - path: '\*_*.zip'
     name: Bits
+
+before_deploy:
+  - PKG_TARBALL=$(ls -1t *.zip | head -n 1); 
+  - PKG_TARBALL_WITH_R=`echo $PKG_TARBALL | sed 's/.zip/_'"R${rver}"'.zip/'` ;
+  - mv ${PKG_TARBALL} ${PKG_TARBALL_WITH_R} ;
 
 deploy:
   provider: GitHub
