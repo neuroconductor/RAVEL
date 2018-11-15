@@ -15,9 +15,10 @@ Encoding: UTF-8
 RoxygenNote: 6.0.1.9000
 biocViews:
 VignetteBuilder: knitr
+Repository: Neuroconductor
 Remotes:  
     jfortin1/RAVELData,
-    neuroconductor/oro.nifti@abbfadf8976d2c29f518c76580d9095d3994439e,
-    neuroconductor/EveTemplate@456fd724547cf42ac09d7b18bbe1a3a0a0390609,
-    neuroconductor/WhiteStripe@80d0e594b01e79e936dea7f31ac6db87590cbc2d,
-    neuroconductor/neurobase@78af0703255f3c77da3be3dc4453cb2830ddff87
+    neuroconductor/oro.nifti@f2b69621fdb62e21c79a13e8a16ab30f49b77efc,
+    neuroconductor/EveTemplate@d15cf7106d238801d95faac9e2753ee10bb632cb,
+    neuroconductor/WhiteStripe@3268ec9ffddba96dcf45a3dd52022cb9969ddf15,
+    neuroconductor/neurobase@8c8370e5c4c00f0ace1232e0590be95463852951
