@@ -12,7 +12,6 @@ init:
 
 platform: x64
 
-
 environment:
   global:
     USE_RTOOLS: true
