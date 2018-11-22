@@ -19,6 +19,6 @@ Repository: Neuroconductor
 Remotes:  
     jfortin1/RAVELData,
     neuroconductor/oro.nifti@a2f1fdf61ccdabee21bbd55717170ae478e2ff9d,
-    neuroconductor/EveTemplate@d15cf7106d238801d95faac9e2753ee10bb632cb,
-    neuroconductor/WhiteStripe@3268ec9ffddba96dcf45a3dd52022cb9969ddf15,
-    neuroconductor/neurobase@64199598bf4616ee944a7ee90474c5fa66270e36
+    neuroconductor/EveTemplate@d9adc9b20b435a10caf579ad08d1142422650d1a,
+    neuroconductor/WhiteStripe@9ac652553f41b57cf0589f9b3eb8f50b60a1ed99,
+    neuroconductor/neurobase@79da5f120d084da41c66146f6357ae38eb184f96
