@@ -1,5 +1,4 @@
 language: r
-sudo: false
 cache: packages
 warnings_are_errors: true
 use_bioc: true
@@ -41,7 +40,8 @@ before_install:
 - start_xvfb ;
 - export rver=`r_version`; echo $rver ;
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then no_open_mp ; fi
-- jags_install
+- jags_install ;
+- v8_install ;
 - remove_neuroc_packages
 - cat DESCRIPTION
 - install_remotes_no_dep
@@ -78,7 +78,7 @@ deploy:
   on:
     tags: true
   api-key:
-    secure: WXa9wrxzrhvoSyhQp3dGEEALQqKHuRkghTlDeBpzOpAeAZ+J0LK8QZQ5Tthal/j2u4e2M8rjJUiI3/GQT7/yA4H74WBVCjwSgQXIic+JERtUoPCCv7dArf2xeYMI9TqWrrug7vDNrqwKf1+4Tecw2lqMMpSE/gnpzs7tcYpj9g2aUdArcBOqwFzSqSIn5Fsc3Noc6mPSzeV0wjdw3paBXLG3V6by0D4eHcZ+jHEWO8iHYbENLvNkaMoG+1HYkUAge86rQSyJR/+3Vsiq8NVjQjZjRp+S+2TcCn3U+eDa4WWUHP7E/mi9fnuGGsyAaRKpHv2Rii76ZwJacaAEJTzFNMqnSGq1/vkEZTURbOkmpYQVCuTZ8iWMd8EtaAI3PrI7Kxk/gcvkRN5uFiL2LqXRSAUrPLtRcxBqGVfhe////EXZAIfizAADKlQCbmeOKKD9TL+YkTN2JxSSLDP3QKFDrYX+opUYYi/fzqZgJee9zhBGySWDTqXaLfn7MEBQVPulxfZE7PRiSre8GU0gVEkJonpDW3eLJkmWWqJXN+5N4WPFz8ddIQopGaflZXF5dN/abF5e40IHAzQhqwdZRuP4I/MDW5ehe8gyoUFgomVuqULmaEWqVro6buOGZZYj9gyTGnFLsinh5F2WOZxAlSnZmVmhjwRXvILThauraH12rKQ=
+    secure: lR0KYhm3r9P2LM9PFpw4Y680GTuh+0kEdZ9ohtPQkXVB6plw5U+HZCk5+xksC4VRDUHkWUJ3upDmZ9OxmyT5Fq8bzLwOcYpMozmY/xh92qtLohtSKm+T9i4wvKXfDBS5wmTH7g0S6d3FslK7NOA3c0HPWZpsCekngi7jEiiqzfsMyMbC76Wl79E2T36CEBmipnv/2bDroSMuLVLbjdMSMxTszycGnbHI9zp2QjxCNTXI0Ca2qs5S9+canUK19EM4oBuvh5fzuo9WZlleFJEq3IirQGp9FvUBpj8H5V8SdvE8W31XRDbQelMcIgRtsvKqRJWqXkQIs+pDq87XlBEfBp21KUqEZE+LZ0U5YBbxi7PriIXZ+LJY47L+o0gV/QY5xAffR12PKClWSxM7FFo30NDJ9xKUo+kamow6YrGZFJfsagsRbH5UsxzdWYUNRE/Umhkm/RUXd7za1lg5aAUDVZ1IK3dlR/xGylcneuBED9REMSePomHb3wYJZ69q57+FGPbR7EKuC/8MgKR1dWXtf4NcyQY0I2N+0ppb0kC+jAV1WEP5K+mCD+1FHnHwKwSGHjwX/jDO/8WCKyt+Siv3V+zqndWkARj23X2jkn3bLl0sJUm/sBd4PLicUbuflUPxYKCPSg4DzOusinpaozRgTpLXYhqx/AcB480i70fQ6qQ=
 after_deploy:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" && ${TRAVIS_R_VERSION_STRING} = "release" ]];
   then echo 'covr::coveralls(type = "all", quiet = FALSE)' > neuroc_covr.R ; travis_wait
