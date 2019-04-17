@@ -14,6 +14,7 @@ platform: x64
 
 environment:
   global:
+    NOT_CRAN: true    
     USE_RTOOLS: true
     # R_CHECK_INSTALL_ARGS: "--install-args=--build --no-multiarch "
     R_CHECK_ARGS: "--no-multiarch --no-manual "
@@ -134,4 +135,4 @@ deploy:
   on:
     appveyor_repo_tag: true
 
-# neuroc.deps commit id:5da4225
+# neuroc.deps commit id:4c08af8

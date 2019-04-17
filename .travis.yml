@@ -58,11 +58,9 @@ before_install:
 - install_python_requirements ;
 - R CMD javareconf ;
 after_success:
-- cat ${PACKAGE_NAME}.Rcheck/00install.out
-- cat ${PACKAGE_NAME}.Rcheck/00check.log
+- dump_logs
 after_failure:
-- cat ${PACKAGE_NAME}.Rcheck/00install.out
-- cat ${PACKAGE_NAME}.Rcheck/00check.log
+- dump_logs
 before_deploy:
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then PKG_TARBALL=$(ls -1t *.tgz | head -n 1);
   PKG_TARBALL_WITH_R=`echo $PKG_TARBALL | sed 's/.tgz/_'"R${rver}"'.tgz/'` ; mv ${PKG_TARBALL}
@@ -80,7 +78,7 @@ deploy:
   on:
     tags: true
   api-key:
-    secure: lbGjcjV89p3jUoZX4pkgYCBEEA/j/bX1oxWS8/FC6PU9gIF64FG0sKlHvp8+H8z4VsIzJTpJZ7pM5IxzP6PnGM4uDc9l/qH7FwGAhapD63KN6E3tAABz9/76HiwqUFSgUnpfkDFKM0Io3GYjlXME8tqevc33N2JZb9+C9jE5Q/YW/22QyLrsHjX+85kgtO+IPis8NOEAJzniQPPy/cQPqm/FAdOQCjrLjVd5QAn4R0UKQI0kr6+eJIPHochQjOH6xTdo8tvruREZIgAnrrX8kYu7h+x7UqjrpGuKO0Vv4SKNDbeelbK6xgFBPFw7mJGZfXqkx49SM5fjFJPKqOf0YeczhhX5GsAmVbBtpeN5AEPjzcZ6+0pwEyKfQUJ45E6uvlXPmxI2OWwAAGM+v51v0qyaIrgz2HFu8ZTifSc8QV2nBrwhD4wZbWM640AV1YLM+j3foRtI2RW4xCKKFTT5UCTbH3h1EcPdPdiaZRTWMFRCWGvY8u0VDi1N13H+w0M/aw1iFUXNIxjnQDoG6bDl1OSa3Db6cHH6BYPJrJSpAFY3xVK9O8XAmzhXV4giTywVBnR3PY/yETTXLJHNBYKs1VXVZ7RNDR4WCETzDOQkXb2Ul5i3FsrC2mGzlu4hIi1sj8fQZJPOot6h4uFaAtTwX9uo14bwgBudepZCllVEY2Y=
+    secure: WqgOW3n9Wnrj8CHSALOHhUFMtP1ag0UVU8H3ghyTTFNVowBu5DZYk6kN0ANQLgueEWZCgkJ+yBCWHjbM9bBbbkAxBfQqKiodkRj3/PHOV9i+h3ggSIOmVoLCPN1iZkgc8RgXUnXgDHIY6MkumsxTfnwCRHXpOTHro5Lx9UFMlDhjfThJJHaarKd4E5Zdp19lv89JbeXi9deJFe7dJVoI6ZXzKovhT2eueWbScf/3ZhNUo/ghD/QARLCv9Qi9DRV8z/A4zgYeDeidFzcHC6GhcM3umiJXNp2qkGOntraR4ZJ1DmL1Ilx/3FbqJnmWX+SOwRq4XOCAR1UCZySd5UiVwgFYIti9f4hMECxwd+QtoeUTzZyqKQv2dOCr6b4+BkX2m1qPwuOpgFvnE1mxWREUqM+ZSJVOm6K7Ac8Oav0Lk8Y5X3SKJzheOZXOfAEftMeUzUqcuJJBE+Sg/7oRgxBurZLLEHMT1kT60iHsNMOB3W1nViff4dnQb95tERl57dGOqN+8jir+x3LOoeWvBEYkzcHucElnwqCATp1p4NG3VVrcim46QL8AdFswoXSLNoScWsm3ncVbf7d8iBg0FNDA7VyafSN/hH5CF+YILjPzwquasuMkHzek+ULYUt8B79UQBiyPgd04vIbso36ik9UXi3bAivfUxuIHLV+TCat2W7E=
 after_deploy:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" && ${TRAVIS_R_VERSION_STRING} = "release" ]];
   then echo 'covr::coveralls(type = "all", quiet = FALSE)' > neuroc_covr.R ; travis_wait
