@@ -16,9 +16,9 @@ RoxygenNote: 6.1.1
 biocViews:
 VignetteBuilder: knitr
 Repository: Neuroconductor
-Remotes: 
-    jfortin1/RAVELData,
-    neuroconductor/oro.nifti@8362fa023b073cd5d0beec0f0be33a50944fe1d7,
+Remotes:  
+    neuroconductor/RAVELData@b97286a1b11f2b2df8d4319f93dd0050f985f1d9,
+    neuroconductor/oro.nifti@d94408b9efca4060771764370b9c9d092af655c0,
     neuroconductor/EveTemplate@8a20ec3f7e375f2a9c5428a7d9ca007d2f5fc637,
-    neuroconductor/WhiteStripe@d72942e7cebacb1ca94b62789b969a27802eb687,
-    neuroconductor/neurobase@53d79de2165775a9afd97c19bb60c9a87fcee981
+    neuroconductor/WhiteStripe@a0343f6cb6f7417075544327025c61ccccb76bb2,
+    neuroconductor/neurobase@8b309ed4d496c575c76f572128b63d35efb97d01
