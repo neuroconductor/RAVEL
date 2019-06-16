@@ -20,3 +20,8 @@ sticker\.png
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^DESCRIPTION\.bak$
+^\.travis\.yml$
+^\./\.travis\.yml\.bak$
+^appveyor\.yml$
+^\./appveyor\.yml\.bak$
