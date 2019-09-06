@@ -1,6 +1,6 @@
 language: r
-cache: packages
 warnings_are_errors: true
+cache: false
 use_bioc: true
 bioc_required: true
 cran: http://cran.rstudio.com
@@ -13,8 +13,6 @@ addons:
     - libfftw3-dev
     - libgsl0-dev
     - libgsl0ldbl
-r_binary_packages:
-- rgl
 os:
 - linux
 - osx
@@ -36,6 +34,7 @@ env:
   - PROJECT_NAME=neuroconductor
   - DISPLAY=:99.0
   - R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
+  - _R_CHECK_FORCE_SUGGESTS_=false
 r_check_args: "--as-cran --install-args=--build"
 before_install:
 - ulimit -n 2048
@@ -92,7 +91,7 @@ deploy:
   on:
     tags: true
   api-key:
-    secure: jZ/pNTgH27Ve3/q34KsJ2c9jEkeiA3nXd6e63x1vdDQvSyuJxaIgLJ8I/R9Hig4o7L8i4AQwFEZlKFD6Qp5HpFek+G5sMYeNeFb4Auw/japshZak+N7cPmPbu9Na/gnQUr6efCA19bAYNluYSxtc+ik9PnzilVP6JRJq5KQ8mzl3sk2/L7m1mJ9pyoFk52QFbHKkOLhND8gBCJq6kIpaK9Qi0lTn+/R5sBuwXS8Jn8EIc3rSjt2IISe2cQRkrx42nq0yToo1SVpKoB+xETPyvKebmP2CoyvDri+SqfvBX++4ABB/H+usJg5jBGir7JR2XAI7csMg0DGaHgpYEyqeDnGlB/xKbvpxK8BP0VdtzZAM4jS9ScF7XWEGPTQ/BxnZE4+asb0mJAcTc/n4aAiVjx/ko2MEyThb2HFktTV3XNkC2C3r75CDVsb6u8grEYiWn3Ir82MBSpIBs4l5Xc2hd1GhRGq9tqmLJ8fFgqzpNhlh5C8jmdAQ9aJ7WjlcqWsQVIfloUgOgn9mdSe/HozlOOEiP1YTZT5e0jQ7I5COOgbuWFqQlN0QEUIo8vSxgT89HPVk8MIDNDP2vg8hIxWIAuuILfKhtADYIBOf25x1rhMpmHJLarsN6FMulf1z8YsiD1EjMOloqtQp7PZMMIBm5RxRV0EC34y6+9XmQGGn+Ow=
+    secure: o2K+nZFeBobM+jpE1gyOcDQYoV3CchA2sWpWKrYIcDfRapcY8GbvO0rEygUdR2Wsudx0CI5I/rnKULfg77CIkqxiYDDFB/I697K3sq6hP/B7Yr4jLzSOITV7D2+jDdDMk07wf12RJ7jotNybLOkJq328fkErljpL2v/QBSc+USmsgq8Vd597XJru20w7/0O6D+hBDRZD4aBflYHzKjrNkQISrtW4TRW3BCoAIBJT88csdalxeXY4syaRLc9h+syDitM5gv2DlLvvNNKP6B8uq818Y2PrFiPjVcHgMOyU1ZmU+E2fgBUr+ijR3eINL5iI2C/yLpquLoURexGBLuJzFOj+iV9XugHri7M1v6wePsxuXjpvUEPNGSqj3SBI9hiZq1MpQ75pYZnFK6Bc/qg/0wq7E+MsqjbIhiLftDXJAlVi+MvuE2AT0AjcoFgd07Y8ijipVNaUcJkLiIDxoCOZ0WIjRcogixe5uRHhQTcckXaie2muOvYmikd2g2tQrNLBwY2ac/kNQD158x5lFHbtORcL5nOTe4xzTsCTYwBYP0RcewRhhi7TMGqI8eq2xkq0yMr4AVp/a/1lDgbDACyvyT0AF1+ZTZBRV7Yn4hS7/qdhL1JdIr1S4GigeD2AdVWEb3IbPdoYnJPUhyH5l9KxiC9OqB/bvECFJwMFbAU94ss=
 after_deploy:
 - echo "${PROJECT_NAME}" | grep -q "releases"; if [[ $? -eq 0 ]]; then run_coverage="false";
   else run_coverage=; fi;
@@ -100,4 +99,4 @@ after_deploy:
   -z "${run_coverage}" ]]; then echo 'covr::coveralls(type = "all", quiet = FALSE)'
   > neuroc_covr.R ; travis_wait 100 Rscript neuroc_covr.R ; rm neuroc_covr.R ; fi
 
-#neuroc.deps version (SHA): 1151ffd
+#neuroc.deps version (SHA): efc1681
