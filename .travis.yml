@@ -16,7 +16,7 @@ addons:
 os:
 - linux
 - osx
-osx_image: xcode9
+osx_image: xcode9.4
 services:
 - xvfb
 r:
@@ -91,7 +91,7 @@ deploy:
   on:
     tags: true
   api-key:
-    secure: o2K+nZFeBobM+jpE1gyOcDQYoV3CchA2sWpWKrYIcDfRapcY8GbvO0rEygUdR2Wsudx0CI5I/rnKULfg77CIkqxiYDDFB/I697K3sq6hP/B7Yr4jLzSOITV7D2+jDdDMk07wf12RJ7jotNybLOkJq328fkErljpL2v/QBSc+USmsgq8Vd597XJru20w7/0O6D+hBDRZD4aBflYHzKjrNkQISrtW4TRW3BCoAIBJT88csdalxeXY4syaRLc9h+syDitM5gv2DlLvvNNKP6B8uq818Y2PrFiPjVcHgMOyU1ZmU+E2fgBUr+ijR3eINL5iI2C/yLpquLoURexGBLuJzFOj+iV9XugHri7M1v6wePsxuXjpvUEPNGSqj3SBI9hiZq1MpQ75pYZnFK6Bc/qg/0wq7E+MsqjbIhiLftDXJAlVi+MvuE2AT0AjcoFgd07Y8ijipVNaUcJkLiIDxoCOZ0WIjRcogixe5uRHhQTcckXaie2muOvYmikd2g2tQrNLBwY2ac/kNQD158x5lFHbtORcL5nOTe4xzTsCTYwBYP0RcewRhhi7TMGqI8eq2xkq0yMr4AVp/a/1lDgbDACyvyT0AF1+ZTZBRV7Yn4hS7/qdhL1JdIr1S4GigeD2AdVWEb3IbPdoYnJPUhyH5l9KxiC9OqB/bvECFJwMFbAU94ss=
+    secure: a/Dhiwd5wheF9dIjoqH6J+kNIIP5P29YAzzgtmPACQZa5f3hsDxfFDxBH0xQJFNqyPuwW/DklXpZv9WzRrjVIFU4T6WuEf6fepkc5e9JjRjKySlKkZjV+rnlvXXfh8XT3/Fw0GXUx0e6+gsQBVGLfkSLNSijGeEsNB3MR3sf+rY2jPtEWqM1QxdrS+dpYsvNwiq3BPahrfRk5YrxCYk65Fjx4ZDXqr+VD/6zRYiesWc5iwpl98wzFNQCzngyw1Bhzm1d4DHpnvuuvfJnsnMTPqe2D9LJtcj0nZmx6myl5GLJ5gZUOeRillmyIFLZ+4OYO/xrZCENrP+LR4fqp/AYpVPF/Jxq+gUx1fX78YUnuqtTl2E3PQC+T3lm2jKC6w5C2M4wpGhem3SGxTvc8B+4FPOtWUY6VEtyAPH59PO5E/qsMM9gv3G+dkGbZW8tOggpiVSrhFh8I+0YzpzZyIlMJWQp3HCwGP+Vj/VToY3rNwPjaEuBfnQq9oaFZ2Q40y+pOE+Ky6IxooCyxv+gANFn9fZ6ZjopcxItIlDaGqN6HpYa996UpiEZw1fy+M8pvu2HWaE5PH+EMR3uFiQ4btb4bReb7MGSKK/vYLv7op0pm+3+tuatGtjW2mSeo2bTLCrpcwFbm+BqwuUnm/UCvxKKQrzpPGbezJ72hsTeLG4JcxU=
 after_deploy:
 - echo "${PROJECT_NAME}" | grep -q "releases"; if [[ $? -eq 0 ]]; then run_coverage="false";
   else run_coverage=; fi;
@@ -99,4 +99,4 @@ after_deploy:
   -z "${run_coverage}" ]]; then echo 'covr::coveralls(type = "all", quiet = FALSE)'
   > neuroc_covr.R ; travis_wait 100 Rscript neuroc_covr.R ; rm neuroc_covr.R ; fi
 
-#neuroc.deps version (SHA): efc1681
+#neuroc.deps version (SHA): e5824ce
