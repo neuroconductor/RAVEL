@@ -18,7 +18,7 @@ VignetteBuilder: knitr
 Repository: Neuroconductor
 Remotes: 
     neuroconductor/RAVELData@b97286a1b11f2b2df8d4319f93dd0050f985f1d9,
-    neuroconductor/oro.nifti@c14d38d6fef7eed47bda14f0a10ec79a6cb8e16e,
-    neuroconductor/EveTemplate@75f193b2b6f49df43fe40563f79e7ac5b40e79a4,
-    neuroconductor/WhiteStripe@10e68c3e9581f3a550d5cc263d453f09ff2f6454,
-    neuroconductor/neurobase@d3a2cc3be17fb34f6e0d1eb1bf61e6eee6bcf48c
+    neuroconductor/oro.nifti@b5d975f4f61bc239a99da071501d0c78d4d84ae1,
+    neuroconductor/EveTemplate@9a9d0479bea19651800482edd86e28c9b3ab3568,
+    neuroconductor/WhiteStripe@ea5517572380abe9030f503f175e85fd7d64dcb8,
+    neuroconductor/neurobase@3bc5945337b4ae1eb744f7aeabc6ef594d468617

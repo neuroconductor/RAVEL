@@ -138,4 +138,4 @@ deploy:
   on:
     appveyor_repo_tag: true
 
-# neuroc.deps commit id:e5824ce
+# neuroc.deps commit id:a5aa5ca
