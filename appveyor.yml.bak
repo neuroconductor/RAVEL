@@ -3,8 +3,7 @@
 
 # Download script file from GitHub
 init:
-  - "ECHO %PYTHON_VERSION% %MINICONDA%"  
-  - rm -f travis-tool.sh
+  - "ECHO %PYTHON_VERSION% %MINICONDA%"
   - ps: |
         $ErrorActionPreference = "Stop"
         Invoke-WebRequest http://raw.github.com/krlmlr/r-appveyor/master/scripts/appveyor-tool.ps1 -OutFile "..\appveyor-tool.ps1"
@@ -14,20 +13,25 @@ platform: x64
 
 environment:
   global:
-    NOT_CRAN: true    
+    NOT_CRAN: true
     USE_RTOOLS: true
     # R_CHECK_INSTALL_ARGS: "--install-args=--build --no-multiarch "
-    R_CHECK_ARGS: "--no-multiarch --no-manual "
-    R_REMOTES_NO_ERRORS_FROM_WARNINGS: true    
+    R_CHECK_ARGS: "--as-cran --no-multiarch --no-manual "
+    R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+    _R_CHECK_FORCE_SUGGESTS_: 0
     WARNINGS_ARE_ERRORS: 1
     PYTHON_VERSION: 3.6
     MINICONDA: C:\Miniconda3-x64
-    R_ARCH: x64    
+    R_ARCH: x64
   matrix:
     - R_VERSION: devel
-      R_VER: 3.7
+      R_VER: 4.1
 
     - R_VERSION: release
+      R_VER: 4.0
+
+    - R_VERSION: 3.6.3
+      CRAN: http://cran.rstudio.com
       R_VER: 3.6
 
     - R_VERSION: 3.5.3
@@ -38,11 +42,9 @@ environment:
       CRAN: http://cran.rstudio.com
       R_VER: 3.4
 
-    - R_VERSION: 3.3.3
-      CRAN: http://cran.rstudio.com
-      R_VER: 3.3
-
 install:
+  - rm -rf .Rprofile
+  - rm -f travis-tool.sh
   - ps: Bootstrap
   - ps: (new-object net.webclient).DownloadFile('https://github.com/muschellij2/neuroc_dependencies/raw/master/JAGS-4.2.0-Rtools33.exe', 'C:\projects\JAGS-4.2.0.exe')
   - cmd: C:\projects\JAGS-4.2.0.exe /S
@@ -51,6 +53,8 @@ install:
   - if exist "requirements.txt" conda update -q conda
   - if exist "requirements.txt" conda info -a
   - if exist "requirements.txt" conda create -q -n test-environment python="%PYTHON_VERSION%" --file requirements.txt
+  - git config core.longpaths true
+  - git config --system core.longpaths true
 
 
 cache:
@@ -81,8 +85,8 @@ test_script:
   # - set PATH=%PATH%;C:\Program Files\Git\cmd;
   # - set PATH=%PATH%;C:\Program Files (x86)\CMake\bin;
   # - set PATH=%PATH%;"C:\Program Files (x86)\CMake\bin";
-  # - set PATH=%PATH%;C:\R\bin\x64;  
-  # - set PATH=%PATH%;C:\Program Files\Git\usr\bin  
+  # - set PATH=%PATH%;C:\R\bin\x64;
+  # - set PATH=%PATH%;C:\Program Files\Git\usr\bin
   # - set PATH=%PATH%;C:\Users\appveyor\AppData\Roaming\npm
   # - set PATH=%PATH%;C:\Users\appveyor\AppData\Local\Yarn\bin
   # - set PATH=%PATH%;C:\Program Files\AppVeyor\BuildAgent\
@@ -95,7 +99,7 @@ test_script:
   - ls
   - ls ../
   # - cp ../*.zip ./
-  - cp -ravTf C:/run %APPVEYOR_BUILD_FOLDER%
+  - cp -ravTf C:/run %APPVEYOR_BUILD_FOLDER%  & exit 0
   - cd %APPVEYOR_BUILD_FOLDER%
   - for %%i in (*.zip) do echo %%~ni> zip_filename.txt
   - SET /P PKG_TARBALL=<zip_filename.txt
@@ -107,7 +111,7 @@ on_failure:
   - 7z a failure.zip *.Rcheck\*
   - appveyor PushArtifact failure.zip
   - cat *.Rcheck\**\*.out
-  - cat *.Rcheck\**\*.log    
+  - cat *.Rcheck\**\*.log
 
 after_test:
 - 7z a testthat.zip *.Rcheck\**\*.Rout
@@ -138,4 +142,4 @@ deploy:
   on:
     appveyor_repo_tag: true
 
-# neuroc.deps commit id:b999a2d
+# neuroc.deps commit id:05ab4c3

@@ -1,17 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# RAVEL
+# RAVEL <img src="sticker.png" width = "150" align="right" />
 
-<!-- ![Sticker](sticker.png) -->
 
-<img src="sticker.png" width="100">
 
 ### Intensity normalizations for structural MRIs
 
 **Creator**: Jean-Philippe Fortin, <fortin946@gmail.com>
 
-**Authors**: Jean-Philippe Fortin, John Muschelli, Russell T. Shinohara
+**Authors**: Jean-Philippe Fortin, John Muschelli
 
 **License**:
 GPL-2
@@ -267,7 +265,7 @@ normalization*.
 | `normalizeRaw`   | No normalization   | T1, T2, FLAIR, PD                  |                                                                            |
 | `normalizeRAVEL` | RAVEL              | T1, T2, FLAIR                      | [Link](http://www.sciencedirect.com/science/article/pii/S1053811916001452) |
 | `normalizeWS`    | White Stripe       | T1, T2, FLAIR                      | [Link](http://www.sciencedirect.com/science/article/pii/S221315821400117X) |
-| `normalizeHM`    | Histogram Matching | T1, T2                             | [Link](http://www.ncbi.nlm.nih.gov/pubmed/10571928)                        |
+| `normalizeHM`    | Histogram Matching | T1, T2, FLAIR, PD                            | [Link](http://www.ncbi.nlm.nih.gov/pubmed/10571928)                        |
 
 Briefly, each function takes as input a list of NIfTI file paths
 specifying the images to be normalized, and return a matrix of
