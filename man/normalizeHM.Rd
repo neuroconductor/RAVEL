@@ -4,25 +4,31 @@
 \alias{normalizeHM}
 \title{Histogram matching intensity normalization.}
 \usage{
-normalizeHM(input.files, output.files = NULL, brain.mask = NULL,
-  type = c("T1", "T2", "FLAIR", "PD"), writeToDisk = FALSE,
-  returnMatrix = TRUE, verbose = TRUE)
+normalizeHM(
+  input.files,
+  output.files = NULL,
+  brain.mask = NULL,
+  type = c("T1", "T2", "FLAIR", "PD"),
+  writeToDisk = FALSE,
+  returnMatrix = TRUE,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{input.files}{Vector of filenames for the input images. Must be NIfTI
 files.}
 
 \item{output.files}{Optional vector of filenames for the output images. By
-default, will be the \code{input.files} with suffix "WS".}
+default, will be the \code{input.files} with suffix "HM".}
 
 \item{brain.mask}{Filename for the brain binary mask specifying the template
 space brain. Must be a NIfTI file.}
 
 \item{type}{What modality is used? Should be one of T1, T2, FLAIR or PD.}
 
-\item{writeToDisk}{Should the normalized scans be saved to the disk?}
+\item{writeToDisk}{Should the scans be saved to the disk? FALSE by default.}
 
-\item{returnMatrix}{Should the matrix of normalized intensities be returned?}
+\item{returnMatrix}{Should the matrix of intensities be returned? FALSE by default.}
 
 \item{verbose}{Should messages be printed?}
 }

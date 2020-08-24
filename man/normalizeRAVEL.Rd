@@ -4,10 +4,21 @@
 \alias{normalizeRAVEL}
 \title{RAVEL intensity normalization}
 \usage{
-normalizeRAVEL(input.files, output.files = NULL, brain.mask = NULL,
-  control.mask = NULL, WhiteStripe = TRUE, WhiteStripe_Type = c("T1",
-  "T2", "FLAIR"), k = 1, returnMatrix = TRUE, writeToDisk = FALSE,
-  verbose = TRUE, ...)
+normalizeRAVEL(
+  input.files,
+  output.files = NULL,
+  brain.mask = NULL,
+  control.mask = NULL,
+  mod = NULL,
+  WhiteStripe = TRUE,
+  WhiteStripe_Type = c("T1", "T2", "FLAIR"),
+  stripped = TRUE,
+  k = 1,
+  returnMatrix = TRUE,
+  writeToDisk = FALSE,
+  verbose = TRUE,
+  ...
+)
 }
 \arguments{
 \item{input.files}{Vector of filenames for the input images. Must be NIfTI
@@ -22,17 +33,21 @@ space brain.  Must be a NIfTI file.}
 \item{control.mask}{Filename for the control region binary mask to be used
 in RAVEL.  Must be a NIfTI file.}
 
+\item{mod}{Model matrix for outcome of interest and other covariates}
+
 \item{WhiteStripe}{Should White Stripe intensity normalization be performed
 prior to RAVEL?.}
 
 \item{WhiteStripe_Type}{What modality is used for WhiteStripe? Should be one
 of T1, T2 or FLAIR.}
 
+\item{stripped}{Is the image skull stripped? TRUE by default.}
+
 \item{k}{Number of unwanted factors to be included in the RAVEL model.}
 
-\item{returnMatrix}{Should the matrix of normalized intensities be returned?}
+\item{returnMatrix}{Should the matrix of intensities be returned? FALSE by default.}
 
-\item{writeToDisk}{Should the normalized images be saved to disk?}
+\item{writeToDisk}{Should the scans be saved to the disk? FALSE by default.}
 
 \item{verbose}{Should messages be printed?}
 

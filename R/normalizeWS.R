@@ -12,10 +12,11 @@
 #' default, will be the \code{input.files} with suffix "WS".
 #' @param brain.mask Filename for the brain binary mask specifying the template
 #' space brain. Must be a NIfTI file.
+#' @param stripped Is the image skull stripped? TRUE by default. 
 #' @param WhiteStripe_Type What modality is used for WhiteStripe? Should be one
 #' of T1, T2 or FLAIR.
-#' @param writeToDisk Should the normalized scans be saved to the disk?
-#' @param returnMatrix Should the matrix of normalized intensities be returned?
+#' @param writeToDisk Should the scans be saved to the disk? FALSE by default. 
+#' @param returnMatrix Should the matrix of intensities be returned? FALSE by default.
 #' @param verbose Should messages be printed?
 #' @return if \code{returnMatrix} is \code{FALSE}, no value returned, but
 #' WhiteStripe-normalized images are saved. If \code{returnMatrix} is
@@ -27,10 +28,10 @@
 #' @importFrom oro.nifti readNIfTI
 #' @importFrom WhiteStripe whitestripe whitestripe_norm 
 #' @export
-normalizeWS <-
-  function(input.files,
+normalizeWS <- function(input.files,
            output.files = NULL,
            brain.mask = NULL,
+           stripped=TRUE,
            WhiteStripe_Type = c("T1", "T2", "FLAIR"),
            writeToDisk = FALSE,
            returnMatrix = TRUE,
@@ -40,7 +41,7 @@ normalizeWS <-
     if (WhiteStripe_Type == "FLAIR") {
       WhiteStripe_Type <- "T2"
     }
-    # RAVEL correction procedure:
+    
     if (!verbose) {
       pboptions(type = "none")
     }
@@ -63,7 +64,7 @@ normalizeWS <-
     V <- pblapply(input.files, function(x) {
       brain <- check_nifti(x, reorient = FALSE, allow.array = FALSE)
       indices <- whitestripe(brain, type = WhiteStripe_Type, 
-                             stripped=TRUE,
+                             stripped=stripped,
                              verbose = FALSE, ...)
       brain   <- whitestripe_norm(brain, indices$whitestripe.ind)
       brain <- as.vector(brain[brain.indices])

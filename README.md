@@ -5,7 +5,7 @@
 
 
 
-### Intensity normalizations for structural MRIs
+### Intensity normalization methods for structural MRIs
 
 **Creator**: Jean-Philippe Fortin, <fortin946@gmail.com>
 
@@ -107,7 +107,7 @@ template_path <- getEvePath("T1")
 # JHU-MNI-ss template brain mask:
 template_brain_mask_path <- getEvePath("Brain_Mask")
 # Example of T1-w MPRAGE image
-scan_path <- system.file(package="RAVELData", "data/scan1.nii.gz")
+scan_path <- system.file(package="RAVELData", "extdata/scan1.nii.gz")
 ```
 
 ### 2.2. JHU-MNI-ss template (\_EVE\_ atlas)
@@ -144,7 +144,7 @@ library(extrantsr)
 scan_reg <- extrantsr::ants2oro(scan_reg)
 ```
 
-I can save the registered brain in the NIfTi format using the
+We can save the registered brain in the NIfTi format using the
 `writeNIfTI` command:
 
 ``` r
@@ -229,7 +229,7 @@ ortho2(scan_reg_n4_brain_csf_mask, crosshairs=FALSE, mfrow=c(1,3), add.orient=FA
 ```
 
 We use the fact that the file `scan_reg_n4_brain_seg` is equal to 1 for
-CSF, 2 for GM and 3 for WM. FOr instance, a WM mask could be created as
+CSF, 2 for GM and 3 for WM. For instance, a WM mask could be created as
 follows:
 
 ``` r
@@ -265,7 +265,8 @@ normalization*.
 | `normalizeRaw`   | No normalization   | T1, T2, FLAIR, PD                  |                                                                            |
 | `normalizeRAVEL` | RAVEL              | T1, T2, FLAIR                      | [Link](http://www.sciencedirect.com/science/article/pii/S1053811916001452) |
 | `normalizeWS`    | White Stripe       | T1, T2, FLAIR                      | [Link](http://www.sciencedirect.com/science/article/pii/S221315821400117X) |
-| `normalizeHM`    | Histogram Matching | T1, T2, FLAIR, PD                            | [Link](http://www.ncbi.nlm.nih.gov/pubmed/10571928)                        |
+| `normalizeHM`    | Histogram Matching | T1, T2, FLAIR, PD                  | [Link](http://www.ncbi.nlm.nih.gov/pubmed/10571928)                        |
+| `normalizeZScore`| Z-score transformation  | T1, T2, FLAIR, PD                  |                                                                            |
 
 Briefly, each function takes as input a list of NIfTI file paths
 specifying the images to be normalized, and return a matrix of
@@ -296,7 +297,7 @@ comparison.
 ### 3.2 White Stripe normalization
 
 The function `normalizeWS` takes as input the preprocessed and
-registered images, applies the White Stripe normalization algorith to
+registered images, applies the White Stripe normalization algorithm to
 each image separately via the `WhiteStripe` R package, and creates a
 matrix of normalized voxel intensities. Note that the White Stripe
 normalization is also included as a first step in the RAVEL algorithm
@@ -315,9 +316,42 @@ function.
 
 ### 3.3 Histogram matching normalization
 
-Not ready yet.
+The function `normalizeHM` takes as input the preprocessed and
+registered images, applies the Histogram matching normalization algorithm to
+each image separately, and creates a
+matrix of normalized voxel intensities.
 
-### 3.4 RAVEL normalization
+| Argument           | Description                                                                                                                               | Default |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `input.files`      | `vector` or `list` of the paths for the input NIfTI image files to be normalized                                                          |         |
+| `output.files`     | Optionnal `vector` or `list` of the paths for the output images. By default, will be the `input.files` with "\_WS" appended at the end.   | `NULL`  |
+| `brain.mask`       | NIfTI image path for the binary brain mask. Must have value `1` for the brain and `0` otherwise                                           |         |
+| `type` | What is the type of images to be normalized? Must be one of “T1”, “T2”, "PD", and “FLAIR”.                                                       | `T1`    |
+| `returnMatrix`     | Should the matrix of normalized images be returned? Rows correspond to voxels specified by `brain.mask`, and columns correspond to scans. | `TRUE`  |
+| `writeToDisk`      | Should the normalized images be saved to the disk as NIfTI files?                                                                         | `FALSE` |
+| `verbose`          | Should the function be verbose?                                                                                                           | `TRUE`  |
+
+
+### 3.4 Z-score transformation (whole-brain)
+
+The function `normalizeZScore` takes as input the preprocessed and
+registered images, applies a whole-brain z-score transformation to
+each image separately, and creates a
+matrix of normalized voxel intensities.
+
+| Argument           | Description                                                                                                                               | Default |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `input.files`      | `vector` or `list` of the paths for the input NIfTI image files to be normalized                                                          |         |
+| `output.files`     | Optionnal `vector` or `list` of the paths for the output images. By default, will be the `input.files` with "\_WS" appended at the end.   | `NULL`  |
+| `brain.mask`       | NIfTI image path for the binary brain mask. Must have value `1` for the brain and `0` otherwise                                           |         |
+| `type` | What is the type of images to be normalized? Must be one of “T1”, “T2”, "PD", and “FLAIR”.                                                       | `T1`    |
+| `returnMatrix`     | Should the matrix of normalized images be returned? Rows correspond to voxels specified by `brain.mask`, and columns correspond to scans. | `TRUE`  |
+| `writeToDisk`      | Should the normalized images be saved to the disk as NIfTI files?                                                                         | `FALSE` |
+| `verbose`          | Should the function be verbose?                                                                                                           | `TRUE`  |
+
+
+
+### 3.5 RAVEL normalization
 
 The function `normalizeRAVEL` takes as input the preprocessed and
 registered images, and a control region mask, and applies the RAVEL
@@ -333,6 +367,7 @@ mask.
 | `output.files`     | Optionnal `vector` or `list` of the paths for the output images. By default, will be the `input.files` with "\_RAVEL" appended at the end.                                                        | `NULL`  |
 | `brain.mask`       | NIfTI image path for the binary brain mask. Must have value `1` for the brain and `0` otherwise                                                                                                   |         |
 | `control.mask`     | NIfTI image path for the binary control region mask. Must have value `1` for the control region and `0` otherwise. See the helper function `mask_intersect` for the creation of a `control.mask`. |         |
+| `mod`     | Model matrix for outcome of interest and other covariates  |    `NULL`     |
 | `WhiteStripe`      | Should White Stripe normalization be performed before RAVEL?                                                                                                                                      | `TRUE`  |
 | `WhiteStripe_Type` | If `WhiteStripe` is `TRUE`, what is the type of images to be normalized? Must be one of “T1”, “T2” and “FLAIR”.                                                                                   | `T1`    |
 | `k`                | Integer specifying the number of principal components to be included in the RAVEL correction.                                                                                                     | `1`     |
@@ -340,7 +375,7 @@ mask.
 | `writeToDisk`      | Should the normalized images be saved to the disk as NIfTI files?                                                                                                                                 | `FALSE` |
 | `verbose`          | Should the function be verbose?                                                                                                                                                                   | `TRUE`  |
 
-### 3.5 Creation of a control region for RAVEL
+### 3.6 Creation of a control region for RAVEL
 
 RAVEL uses a control region of the brain to infer unwanted variation
 across subjects. The control region is made of voxels known to be
@@ -350,8 +385,8 @@ progression of AD. The control region must be specified in the argument
 `control.mask` of the function `normalizeRAVEL` as a path to a NIfTI
 file storing a binary mask. In the case of a CSF control region, one way
 to create such a binary mask is to create a CSF binary mask for each
-image, and then to take the intersection of all those binary masks. This
-can be done with the function `maskIntersect`. The function takes as
+scan first, and then to take the intersection of all those binary masks. This
+can be done with the function `maskIntersect` in `RAVEL`. The function takes as
 input a list of binary masks (either `nifti` objects or a list of NIfTI
 file paths), and will output the intersection of all the binary masks.
 By default, the function will save the intersection mask to the disk as
@@ -361,8 +396,9 @@ a NIfTI file, as specified by
 Example:
 
 ``` r
-mask <- maskIntersect(list("csf_mask1.nii.gz", "csf_mask2.nii.gz", "csf_mask3.nii.gz"),
-    output.file="intersection_mask.nii.gz")
+dir   <- file.path(find.package("RAVELData"), "extdata")
+masks <- list.files(dir, full.names=TRUE, pattern="*mask*.nii*")
+intersect_mask  <- maskIntersect(masks, output.file=tempfile())
 ```
 
 When the number of subjects is large, the intersection mask may be
@@ -377,8 +413,7 @@ subjects, one would
 type
 
 ``` r
-mask <- maskIntersect(list("csf_mask1.nii.gz", "csf_mask2.nii.gz", "csf_mask3.nii.gz"),
-    output.file="intersection_mask.nii.gz", prob=0.9)
+intersect_mask  <- maskIntersect(masks, output.file=tempfile(), prob=0.9)
 ```
 
 For studies with a small number of subjects, the opposite problem may
@@ -386,5 +421,30 @@ arise: too many voxels labelled as CSF, close to the skull, might be
 retained in the final intersection mask. Mask erosion, for instance
 using [fslr](https://github.com/muschellij2/fslr), may be performed to
 remove such voxels and refine the control mask.
+
+### 3.7 Controlling for biological covariates in RAVEL
+
+In removing the unwanted variation estimated using control voxels, it is possible to preserve biological variation by specifying biological covariates in the `normalizeRAVEL` function, similar to ComBat harmonization. 
+
+For instance, suppose we want to normalize intensities across participants using CSF, and also want to make sure that we don't remove variation in intensities associated with age. We first need to build a model matrix for the biological covariates (here age):
+
+``` r
+age <- c(70,62,43,76) #Simulated age
+gender <- c("M", "M", "F", "F")
+mod <- model.matrix(~age+gender)
+```
+
+Note that while the model matrix has an intercept column, this will be automatically handled internally by the ```normalizeRAVEL``` function. To run RAVEL while adjusting for age and gender, we include ```mod``` as an argument as follows:
+
+``` r
+Y.ravel.mod <- normalizeRAVEL(input.files=input.files,
+	control.mask=control.mask,
+	brain.mask=brain.mask,
+	k=1, 
+	mod=mod,
+	returnMatrix=TRUE,
+	WhiteStripe=FALSE
+)
+```
 
 Logo from: <https://openclipart.org/detail/14743/violin-bow>
