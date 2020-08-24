@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Intersection of a list of brain masks — maskIntersect • RAVEL</title>
+<title>Whole-brain z-score intensity normalization — normalizeZScore • RAVEL</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Intersection of a list of brain masks — maskIntersect" />
-<meta property="og:description" content="Intersection of a list of brain masks." />
+<meta property="og:title" content="Whole-brain z-score intensity normalization — normalizeZScore" />
+<meta property="og:description" content="Whole-brain z-score intensity normalization." />
 
 
 
@@ -120,22 +120,21 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Intersection of a list of brain masks</h1>
-    <small class="dont-index">Source: <a href='https://github.com/Jfortin1/RAVEL/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>maskIntersect.Rd</code></div>
+    <h1>Whole-brain z-score intensity normalization</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Jfortin1/RAVEL/blob/master/R/normalizeZScore.R'><code>R/normalizeZScore.R</code></a></small>
+    <div class="hidden name"><code>normalizeZScore.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Intersection of a list of brain masks.</p>
+    <p>Whole-brain z-score intensity normalization.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>maskIntersect</span>(
-  <span class='kw'>list</span>,
-  output.file = <span class='kw'>NULL</span>,
-  prob = <span class='fl'>1</span>,
-  reorient = <span class='fl'>FALSE</span>,
-  returnObject = <span class='fl'>TRUE</span>,
-  writeToDisk = <span class='fl'>TRUE</span>,
+    <pre class="usage"><span class='fu'>normalizeZScore</span>(
+  <span class='kw'>input.files</span>,
+  output.files = <span class='kw'>NULL</span>,
+  brain.mask = <span class='kw'>NULL</span>,
+  writeToDisk = <span class='fl'>FALSE</span>,
+  returnMatrix = <span class='fl'>TRUE</span>,
   verbose = <span class='fl'>TRUE</span>
 )</pre>
 
@@ -143,30 +142,27 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>list</th>
-      <td><p>List of the mask input files (nifti files) or mask nifti
-objects.</p></td>
+      <th>input.files</th>
+      <td><p>Vector of filenames for the input images. Must be NIfTI
+files.</p></td>
     </tr>
     <tr>
-      <th>output.file</th>
-      <td><p>Optional filename for the output image.</p></td>
+      <th>output.files</th>
+      <td><p>Optional vector of filenames for the output images. By
+default, will be the <code>input.files</code> with suffix "ZScore".</p></td>
     </tr>
     <tr>
-      <th>prob</th>
-      <td><p>Probability of intersection. Ex: 0.9 will return a mask for
-voxels that intersect 90% of the time.</p></td>
-    </tr>
-    <tr>
-      <th>reorient</th>
-      <td><p>Should the input images be reoriented? FALSE by default.</p></td>
-    </tr>
-    <tr>
-      <th>returnObject</th>
-      <td><p>Should a nifti object be returned?</p></td>
+      <th>brain.mask</th>
+      <td><p>Filename for the brain binary mask specifying the template
+space brain. Must be a NIfTI file.</p></td>
     </tr>
     <tr>
       <th>writeToDisk</th>
-      <td><p>Should the intersection mask be saved to the disk?</p></td>
+      <td><p>Should the scans be saved to the disk? FALSE by default.</p></td>
+    </tr>
+    <tr>
+      <th>returnMatrix</th>
+      <td><p>Should the matrix of intensities be returned? FALSE by default.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
@@ -176,19 +172,14 @@ voxels that intersect 90% of the time.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>If <code>returnObject</code> is <code>TRUE</code>, a <code>nifti</code> object is
-returned, and if <code>writeToDisk</code> is <code>TRUE</code>, the intersection mask is
-saved to disk as a NIfTI file.</p>
+    <p>if <code>returnMatrix</code> is <code>FALSE</code>, no value returned, but
+Zscore-normalized images are saved. If <code>returnMatrix</code> is <code>TRUE</code>,
+Zscore-normalized images are saved and a matrix of normalized intensities is
+returned.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Jean-Philippe Fortin</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='kw'><a href='https://www.slicer.org/publications/item/view/1883'>EveTemplate</a></span>)){
-  <span class='kw'>path1</span> <span class='op'>&lt;-</span> <span class='kw'>path2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/EveTemplate/man/getEvePath.html'>getEvePath</a></span>()
-  <span class='kw'>inter</span> <span class='op'>&lt;-</span> <span class='fu'>maskIntersect</span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>path1</span>,<span class='kw'>path2</span>), writeToDisk=<span class='fl'>FALSE</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Loading required package: EveTemplate</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: oro.nifti</span></div><div class='output co'>#&gt; <span class='message'>oro.nifti 0.10.3</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

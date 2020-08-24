@@ -5,19 +5,20 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Working with RAVEL • RAVEL</title>
+<title>RAVEL: R package for intensity normalization of structural MRIs • RAVEL</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Working with RAVEL">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><meta property="og:title" content="RAVEL: R package for intensity normalization of structural MRIs">
 <meta property="og:description" content="RAVEL">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -30,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RAVEL</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.3.5</span>
       </span>
     </div>
 
@@ -53,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/ravel.html">Working with RAVEL</a>
+      <a href="../articles/ravel.html">RAVEL: R package for intensity normalization of structural MRIs</a>
     </li>
   </ul>
 </li>
@@ -78,8 +79,12 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Working with RAVEL</h1>
-            
+      <h1 data-toc-skip>RAVEL: R package for intensity normalization of structural MRIs</h1>
+                        <h4 class="author">Jean-Philippe Fortin</h4>
+                  <a class="author_email" href="mailto:#"></a><a href="mailto:fortin946@gmail.com">fortin946@gmail.com</a>
+      
+                  
+            <h4 class="date">2020-08-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/Jfortin1/RAVEL/blob/master/vignettes/ravel.Rmd"><code>vignettes/ravel.Rmd</code></a></small>
       <div class="hidden name"><code>ravel.Rmd</code></div>
@@ -88,24 +93,153 @@
 
     
     
-<div id="main-functions" class="section level2">
+<div id="main-functions" class="section level1">
+<h1 class="hasAnchor">
+<a href="#main-functions" class="anchor"></a>Main functions</h1>
+<ul>
+<li>
+<code>normalizeRaw</code>: no normalization</li>
+<li>
+<code>normalizeWS</code>: WhiteStripe normalization</li>
+<li>
+<code>normalizeHM</code>: Histogram Matching normalization</li>
+<li>
+<code>normalizeZScore</code>: Whole-brain z-score normalization</li>
+<li>
+<code>normalizeRAVEL</code>: RAVEL normalization</li>
+</ul>
+<div id="example-dataset-from-raveldata" class="section level2">
 <h2 class="hasAnchor">
-<a href="#main-functions" class="anchor"></a>Main functions</h2>
-<p>The main functions implemented are <code>normalizeRaw</code> and <code>normalizeRAVEL</code>.</p>
-<p><a href="https://github.com/jfortin1/RAVEL">This GitHub repository</a> will be used for development and issues.</p>
+<a href="#example-dataset-from-raveldata" class="anchor"></a>Example dataset from <code>RAVELData</code>
+</h2>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://www.slicer.org/publications/item/view/1883">EveTemplate</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">RAVEL</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">RAVELData</span>)
+</pre></div>
+<p>We first get the path of the NIfTI files for the 4 scans stored in the R package <code>RAVELData</code>. The scans were corrected for inhomogeneity and non-linearly registered to the Eve Template after skull stripping.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw">dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/find.package.html">find.package</a></span>(<span class="st">"RAVELData"</span>), <span class="st">"extdata"</span>)
+<span class="kw">input.files</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span>(<span class="kw">dir</span>, full.names=<span class="fl">TRUE</span>, pattern=<span class="st">"processed.nii.gz"</span>)
+</pre></div>
+<p>RAVEL requires a set of control voxels to infer the unwanted variation. We use a CSF mask that was created using the intersection of all 4 subject-specific CSF masks, also stored in <code>RAVELData</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw">control.mask</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span>(<span class="kw">dir</span>, full.names=<span class="fl">TRUE</span>, pattern=<span class="st">"mask_intersection.nii.gz"</span>)
+</pre></div>
+<p>Finally, we also need to provide a brain mask. Since the 4 scans were registered to the Eve Template, we use the Eve Template brain mask accessible through the R package <code>EveTemplate</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="kw">brain.mask</span>   <span class="op">&lt;-</span> <span class="kw">EveTemplate</span>::<span class="fu"><a href="https://rdrr.io/pkg/EveTemplate/man/getEvePath.html">getEvePath</a></span>(<span class="st">"Brain_Mask"</span>)
+</pre></div>
+</div>
+</div>
+<div id="no-normalization" class="section level1">
+<h1 class="hasAnchor">
+<a href="#no-normalization" class="anchor"></a>No normalization</h1>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="kw">Y.raw</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/normalizeRaw.html">normalizeRaw</a></span>(input.files=<span class="kw">input.files</span>,
+    brain.mask=<span class="kw">brain.mask</span>,
+    returnMatrix=<span class="fl">TRUE</span>
+)
+</pre></div>
+</div>
+<div id="histogram-matching-normalization" class="section level1">
+<h1 class="hasAnchor">
+<a href="#histogram-matching-normalization" class="anchor"></a>Histogram matching normalization</h1>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="kw">Y.hm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/normalizeHM.html">normalizeHM</a></span>(input.files=<span class="kw">input.files</span>,
+    brain.mask=<span class="kw">brain.mask</span>,
+    returnMatrix=<span class="fl">TRUE</span>,
+    type=<span class="st">"T1"</span>
+)
+</pre></div>
+</div>
+<div id="whitestripe-normalization" class="section level1">
+<h1 class="hasAnchor">
+<a href="#whitestripe-normalization" class="anchor"></a>WhiteStripe normalization</h1>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="kw">Y.ws</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/normalizeWS.html">normalizeWS</a></span>(input.files=<span class="kw">input.files</span>,
+    brain.mask=<span class="kw">brain.mask</span>,
+    returnMatrix=<span class="fl">TRUE</span>,
+    WhiteStripe_Type=<span class="st">"T1"</span>
+)
+</pre></div>
+</div>
+<div id="whole-brain-z-score-normalization" class="section level1">
+<h1 class="hasAnchor">
+<a href="#whole-brain-z-score-normalization" class="anchor"></a>Whole-brain z-score normalization</h1>
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="kw">Y.zscore</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/normalizeZScore.html">normalizeZScore</a></span>(input.files=<span class="kw">input.files</span>,
+    brain.mask=<span class="kw">brain.mask</span>,
+    returnMatrix=<span class="fl">TRUE</span>
+)
+</pre></div>
+</div>
+<div id="ravel-normalization" class="section level1">
+<h1 class="hasAnchor">
+<a href="#ravel-normalization" class="anchor"></a>RAVEL normalization</h1>
+<p>We perform RAVEL intensity normalization using <span class="math inline">\(k=1\)</span> component to tesimate the unwanted variation. For the sake of time, we specify <code>WhiteStripe=FALSE</code>, but we recommend to <strong>always</strong> use the default <code>WhiteStripe=TRUE</code> as we have shown that the combination WhiteStripe + RAVEL is best at normalizing data.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit">
+<span class="kw">Y.ravel</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/normalizeRAVEL.html">normalizeRAVEL</a></span>(input.files=<span class="kw">input.files</span>,
+    control.mask=<span class="kw">control.mask</span>,
+    brain.mask=<span class="kw">brain.mask</span>,
+    k=<span class="fl">1</span>, 
+    returnMatrix=<span class="fl">TRUE</span>,
+    WhiteStripe=<span class="fl">FALSE</span>
+)
+</pre></div>
+<p>If <code>returnMatrix=FALSE</code>, NIfTI objects containing the RAVEL-normalized values will be saved to disk instead.</p>
+<div id="creation-of-a-control-voxels-mask" class="section level2">
+<h2 class="hasAnchor">
+<a href="#creation-of-a-control-voxels-mask" class="anchor"></a>Creation of a control voxels mask</h2>
+<p>The function <code>maskIntersect</code> will produce the intersection of a list of binary masks. For instance, to produce an intersection mask of all 4 CSF masks stored in <code>RAVELData</code>, we would do the following:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="kw">dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/find.package.html">find.package</a></span>(<span class="st">"RAVELData"</span>), <span class="st">"extdata"</span>)
+<span class="kw">masks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span>(<span class="kw">dir</span>, full.names=<span class="fl">TRUE</span>, pattern=<span class="st">"*mask*.nii*"</span>)
+<span class="kw">mask</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/maskIntersect.html">maskIntersect</a></span>(<span class="kw">masks</span>, output.file=<span class="st">"csf_mask_intersection.nii.gz"</span>)
+</pre></div>
+<p>An additional argument, <code>prob</code>, can control the percentage of participants in which the control voxel appears.</p>
+</div>
+<div id="controling-for-biological-covariates-in-ravel" class="section level2">
+<h2 class="hasAnchor">
+<a href="#controling-for-biological-covariates-in-ravel" class="anchor"></a>Controling for biological covariates in RAVEL</h2>
+<p>In removing the unwanted variation estimated using control voxels, it is possible to preserve biological variation by specifying biological covariates in the <code>normalizeRAVEL</code> function, similar to ComBat harmonization.</p>
+<p>For instance, suppose we want to normalize intensities across participants using CSF, and also want to make sure that we don’t remove variation in intensities associated with age. We first need to build a model matrix for the biological covariates (here age):</p>
+<div class="sourceCode" id="cb11"><pre class="downlit">
+<span class="kw">age</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">70</span>,<span class="fl">62</span>,<span class="fl">43</span>,<span class="fl">76</span>) <span class="co">#Simulated age</span>
+<span class="kw">gender</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"M"</span>, <span class="st">"M"</span>, <span class="st">"F"</span>, <span class="st">"F"</span>)
+<span class="kw">mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/model.matrix.html">model.matrix</a></span>(<span class="op">~</span><span class="kw">age</span><span class="op">+</span><span class="kw">gender</span>)
+<span class="kw">mod</span>
+</pre></div>
+<pre><code>##   (Intercept) age genderM
+## 1           1  70       1
+## 2           1  62       1
+## 3           1  43       0
+## 4           1  76       0
+## attr(,"assign")
+## [1] 0 1 2
+## attr(,"contrasts")
+## attr(,"contrasts")$gender
+## [1] "contr.treatment"</code></pre>
+<p>Note that while the model matrix has an intercept column, this will be automatically handled internally by the <code>normalizeRAVEL</code> function. To run RAVEL while adjusting for age and gender, we include <code>mod</code> as an argument as follows:</p>
+<div class="sourceCode" id="cb13"><pre class="downlit">
+<span class="kw">Y.ravel.mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/normalizeRAVEL.html">normalizeRAVEL</a></span>(input.files=<span class="kw">input.files</span>,
+    control.mask=<span class="kw">control.mask</span>,
+    brain.mask=<span class="kw">brain.mask</span>,
+    k=<span class="fl">1</span>, 
+    mod=<span class="kw">mod</span>,
+    returnMatrix=<span class="fl">TRUE</span>,
+    WhiteStripe=<span class="fl">FALSE</span>
+)
+</pre></div>
+</div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#main-functions">Main functions</a></li>
-      </ul>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
 
@@ -116,7 +250,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
